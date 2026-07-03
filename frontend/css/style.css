@@ -1,43 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:#f4f6f8;
+    background:#0B0B0B;
+    color:#F5F5F5;
 }
+
+/* Header */
 
 header{
-    background:#0d6efd;
-    color:white;
+    background:linear-gradient(
+        135deg,
+        #111111,
+        #1A1A1A
+    );
+    padding:30px;
     text-align:center;
-    padding:20px;
+    border-bottom:2px solid #D4AF37;
+    box-shadow:0 4px 20px rgba(212,175,55,0.2);
 }
 
-header a{
-    color:white;
-    text-decoration:none;
+header h1{
+    color:#D4AF37;
+    font-size:42px;
+    letter-spacing:2px;
 }
+
+header p{
+    color:#cfcfcf;
+    margin-top:10px;
+    font-size:18px;
+}
+
+/* Diamond Grid */
 
 .diamond-grid{
+    width:90%;
+    margin:40px auto;
+
     display:grid;
     grid-template-columns:
         repeat(
-            auto-fill,
-            minmax(280px,1fr)
+            auto-fit,
+            minmax(300px,1fr)
         );
 
-    gap:20px;
-    padding:20px;
+    gap:30px;
 }
 
+/* Card */
+
 .diamond-card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
+    background:#151515;
+    border:1px solid #2a2a2a;
+    border-radius:20px;
+    padding:25px;
+
+    transition:0.4s;
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.4);
+}
+
+.diamond-card:hover{
+    transform:translateY(-8px);
+
+    border-color:#D4AF37;
 
     box-shadow:
-    0 2px 10px rgba(0,0,0,.1);
+        0 15px 35px rgba(212,175,55,0.25);
+}
+
+.diamond-card h3{
+    color:#D4AF37;
+    margin-bottom:20px;
+    font-size:24px;
+}
+
+.diamond-card p{
+    margin-bottom:10px;
+    color:#e5e5e5;
+}
+
+.diamond-card strong{
+    color:#ffffff;
+}
+
+/* Buttons */
+
+button{
+    background:#D4AF37;
+    color:#111;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#F4D160;
+    transform:scale(1.05);
+}
+
+/* Inputs */
+
+input,
+select{
+    background:#1C1C1C;
+    color:white;
+    border:1px solid #333;
+    padding:12px;
+    border-radius:8px;
+    outline:none;
+}
+
+input:focus,
+select:focus{
+    border-color:#D4AF37;
+    box-shadow:
+        0 0 10px rgba(212,175,55,0.3);
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#D4AF37;
+    border-radius:10px;
 }

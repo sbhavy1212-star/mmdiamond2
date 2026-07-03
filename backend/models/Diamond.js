@@ -6,11 +6,19 @@ new mongoose.Schema(
     stockId: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        uppercase: true,
+        trim: true
     },
 
     status: {
         type: String,
+        enum: [
+            "Available",
+            "Hold",
+            "Sold",
+            "Memo"
+        ],
         default: "Available"
     },
 
@@ -29,6 +37,12 @@ new mongoose.Schema(
 },
 {
     timestamps: true
+});
+
+diamondSchema.index({
+    stockId: 1,
+    shape: 1,
+    color: 1
 });
 
 module.exports =

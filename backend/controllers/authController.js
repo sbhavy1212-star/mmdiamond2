@@ -2,11 +2,41 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
+// REGISTER
 exports.register = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const {
+            name,
+            email,
+            password,
+            confirmPassword,
+            role
+        } = req.body;
 
-        const exists = await User.findOne({ email });
+        // Validation
+        if (
+            !name ||
+            !email ||
+            !password ||
+            !confirmPassword
+        ) {
+            return res.status(400).json({
+                message: "All fields are required"
+            });
+        }
+
+        // Password Match Check
+        if (password !== confirmPassword) {
+            return res.status(400).json({
+                message:
+                    "Password and Confirm Password do not match"
+            });
+        }
+
+        // Email Already Exists
+        const exists = await User.findOne({
+            email: email.toLowerCase()
+        });
 
         if (exists) {
             return res.status(400).json({
@@ -14,24 +44,27 @@ exports.register = async (req, res) => {
             });
         }
 
+        // Hash Password
         const hashedPassword =
             await bcrypt.hash(password, 10);
 
+        // Create User
         const user = await User.create({
             name,
-            email,
-            password: hashedPassword
+            email: email.toLowerCase(),
+            password: hashedPassword,
+            role: role || "user"
         });
 
         res.status(201).json({
-        message: "Registration Successful",
-        user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role
-    }
-});
+            message: "Registration Successful",
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            }
+        });
 
     } catch (error) {
         res.status(500).json({
@@ -40,12 +73,14 @@ exports.register = async (req, res) => {
     }
 };
 
+// LOGIN
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        const user =
-            await User.findOne({ email });
+        const user = await User.findOne({
+            email: email.toLowerCase()
+        });
 
         if (!user) {
             return res.status(401).json({
@@ -79,15 +114,15 @@ exports.login = async (req, res) => {
         );
 
         res.json({
-        message: "Login Successful",
-        token,
-        user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role
-    }
-});
+            message: "Login Successful",
+            token,
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            }
+        });
 
     } catch (error) {
         res.status(500).json({

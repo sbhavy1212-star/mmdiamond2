@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Diamond</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<header>
+    <h1>Add New Diamond</h1>
+</header>
+
+<div class="container">
+
+    <form id="diamondForm" class="card">
+
+        <input type="text"
+               id="stockId"
+               placeholder="Stock ID"
+               required>
+
+        <input type="text"
+               id="shape"
+               placeholder="Shape"
+               required>
+
+        <input type="number"
+               id="carat"
+               placeholder="Carat"
+               step="0.01"
+               required>
+
+        <input type="text"
+               id="color"
+               placeholder="Color"
+               required>
+
+        <input type="text"
+               id="purity"
+               placeholder="Purity"
+               required>
+
+        <input type="text"
+               id="cut"
+               placeholder="Cut">
+
+        <input type="text"
+               id="lab"
+               placeholder="Lab">
+
+        <input type="number"
+               id="totalPrice"
+               placeholder="Total Price">
+
+        <button type="submit">
+            Add Diamond
+        </button>
+
+    </form>
+
+</div>
+
+<script src="js/addDiamond.js"></script>
+
+</body>
+</html>

@@ -4,13 +4,13 @@ const express = require("express");
 const cors = require("cors");
 
 const connectDB =
-require("./config/db");
+    require("./config/db");
 
 const authRoutes =
-require("./routes/authRoutes");
+    require("./routes/authRoutes");
 
 const diamondRoutes =
-require("./routes/diamondRoutes");
+    require("./routes/diamondRoutes");
 
 const app = express();
 
@@ -19,24 +19,15 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-app.use(
-    "/api/auth",
-    authRoutes
-);
-
-app.use(
-    "/api/diamonds",
-    diamondRoutes
-);
+app.use("/api/auth", authRoutes);
+app.use("/api/diamonds", diamondRoutes);
 
 app.get("/", (req, res) => {
-    res.send(
-        "M & M Diamond API Running"
-    );
+    res.send("M & M Diamond API Running");
 });
 
 const PORT =
-process.env.PORT || 5000;
+    process.env.PORT || 5000;
 
 app.listen(PORT, () => {
     console.log(

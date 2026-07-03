@@ -25,12 +25,8 @@ function goToInventory() {
 }
 
 function goToAddDiamond() {
-    alert(
-        "Add Diamond Page Coming Soon"
-    );
-
-    // window.location =
-    //     "addDiamond.html";
+    window.location =
+        "addDiamond.html";
 }
 
 function logout() {
