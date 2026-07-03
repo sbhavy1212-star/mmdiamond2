@@ -10,6 +10,7 @@
 body{
     background:#0B0B0B;
     color:#F5F5F5;
+    min-height:100vh;
 }
 
 /* Header */
@@ -38,9 +39,30 @@ header p{
     font-size:18px;
 }
 
+/* Search */
+
+#searchInput{
+    width:90%;
+    max-width:500px;
+    display:block;
+    margin:30px auto;
+    padding:14px;
+    background:#1C1C1C;
+    color:white;
+    border:1px solid #333;
+    border-radius:10px;
+    outline:none;
+}
+
+#searchInput:focus{
+    border-color:#D4AF37;
+    box-shadow:
+        0 0 10px rgba(212,175,55,0.3);
+}
+
 /* Diamond Grid */
 
-.diamond-grid{
+#diamondContainer{
     width:90%;
     margin:40px auto;
 
@@ -54,7 +76,7 @@ header p{
     gap:30px;
 }
 
-/* Card */
+/* Diamond Card */
 
 .diamond-card{
     background:#151515;
@@ -63,6 +85,7 @@ header p{
     padding:25px;
 
     transition:0.4s;
+
     box-shadow:
         0 8px 25px rgba(0,0,0,0.4);
 }
@@ -83,12 +106,8 @@ header p{
 }
 
 .diamond-card p{
-    margin-bottom:10px;
+    margin-bottom:12px;
     color:#e5e5e5;
-}
-
-.diamond-card strong{
-    color:#ffffff;
 }
 
 /* Buttons */
@@ -97,10 +116,11 @@ button{
     background:#D4AF37;
     color:#111;
     border:none;
-    padding:12px 25px;
+    padding:12px 20px;
     border-radius:8px;
     cursor:pointer;
     font-weight:600;
+    margin-top:10px;
     transition:0.3s;
 }
 
@@ -128,6 +148,56 @@ select:focus{
         0 0 10px rgba(212,175,55,0.3);
 }
 
+/* Modal */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.85);
+    overflow-y:auto;
+    z-index:1000;
+    padding:20px;
+}
+
+.modal-content{
+    background:#1e1e1e;
+    width:90%;
+    max-width:500px;
+    margin:40px auto;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #D4AF37;
+    max-height:90vh;
+    overflow-y:auto;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.6);
+}
+
+.modal-content h2{
+    color:#D4AF37;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.modal-content input{
+    width:100%;
+    margin:10px 0;
+}
+
+.modal-content button{
+    width:100%;
+    margin-top:20px;
+}
+
+.close{
+    float:right;
+    font-size:30px;
+    cursor:pointer;
+    color:#D4AF37;
+}
+
 /* Scrollbar */
 
 ::-webkit-scrollbar{
@@ -137,4 +207,42 @@ select:focus{
 ::-webkit-scrollbar-thumb{
     background:#D4AF37;
     border-radius:10px;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    header{
+        padding:20px;
+    }
+
+    header h1{
+        font-size:30px;
+    }
+
+    header p{
+        font-size:15px;
+    }
+
+    #diamondContainer{
+        width:95%;
+        grid-template-columns:1fr;
+    }
+
+    .diamond-card{
+        padding:20px;
+    }
+
+    .modal-content{
+        width:95%;
+        margin:20px auto;
+        padding:20px;
+        max-height:85vh;
+    }
+
+    .modal-content input,
+    .modal-content button{
+        font-size:16px;
+    }
 }

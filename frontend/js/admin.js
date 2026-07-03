@@ -25,6 +25,7 @@ function goToInventory() {
 }
 
 function goToAddDiamond() {
+    alert("Button Clicked");
     window.location =
         "addDiamond.html";
 }

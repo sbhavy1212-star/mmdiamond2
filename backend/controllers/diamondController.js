@@ -61,10 +61,14 @@ exports.addDiamond =
 async (req, res) => {
     try {
 
+        console.log(req.body);
+
         const diamond =
             await Diamond.create(
                 req.body
             );
+
+        console.log(diamond);
 
         res.status(201).json({
             message: "Diamond Added",
@@ -72,12 +76,13 @@ async (req, res) => {
         });
 
     } catch (error) {
+        console.log(error);
+
         res.status(500).json({
             message: error.message
         });
     }
 };
-
 exports.updateDiamond =
 async (req, res) => {
     try {

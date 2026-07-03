@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>M & M Diamond</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -9,10 +10,61 @@
 <header>
     <h1>M & M Diamond</h1>
     <p>Available Diamond Inventory</p>
+
+    <div>
+        <button onclick="goToAddDiamond()">
+            Add Diamond
+        </button>
+
+        <button onclick="goToAdmin()">
+            Dashboard
+        </button>
+
+        <button onclick="logout()">
+            Logout
+        </button>
+    </div>
 </header>
+
+<input
+    type="text"
+    id="searchInput"
+    placeholder="Search by Stock ID..."
+>
+<input id="searchInput" placeholder="Search Stock ID..." />
 
 <div id="diamondContainer">
     Loading diamonds...
+</div>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal()">
+            ×
+        </span>
+
+        <h2>Edit Diamond</h2>
+
+        <form id="editForm">
+
+            <input type="text" id="edit_stockId" placeholder="Stock ID">
+            <input type="text" id="edit_shape" placeholder="Shape">
+            <input type="number" id="edit_carat" placeholder="Carat">
+            <input type="text" id="edit_color" placeholder="Color">
+            <input type="text" id="edit_purity" placeholder="Purity">
+            <input type="text" id="edit_cut" placeholder="Cut">
+            <input type="text" id="edit_lab" placeholder="Lab">
+            <input type="number" id="edit_totalPrice" placeholder="Total Price">
+
+            <button type="submit">Update Diamond</button>
+
+        </form>
+
+    </div>
+
 </div>
 
 <script src="js/main.js"></script>

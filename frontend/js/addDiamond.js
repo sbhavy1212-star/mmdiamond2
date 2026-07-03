@@ -1,3 +1,6 @@
+const API =
+    "http://localhost:5000/api/diamonds";
+
 document
 .getElementById("diamondForm")
 .addEventListener(
@@ -5,6 +8,7 @@ document
 async (e) => {
 
     e.preventDefault();
+      console.log("Add Diamond button clicked");
 
     const token =
         localStorage.getItem("token");
@@ -72,6 +76,6 @@ async (e) => {
 
     const data =
         await response.json();
-
+        console.log(data);
     alert(data.message);
 });
